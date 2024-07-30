@@ -6,9 +6,9 @@ extends CharacterBody2D
 
 func _process(delta):
 	if buff == 1:
-		rotation_degrees += speed * delta
-		global_position = player.global_position + Vector2.RIGHT.rotated(angle)*17
-		angle += 0.01
+		rotation_degrees += speed + delta/2 #how fast the bone spins in place
+		global_position = player.global_position + Vector2.RIGHT.rotated(angle)*20
+		angle += 0.10 #how fast the bone spins around the player
 		
 		#velocity = (global_position - player.global_position).normalized().rotated(PI/2) * speed
 

@@ -8,7 +8,6 @@
 script = ExtResource("1_gp18k")
 
 [node name="Score" type="Label" parent="."]
-anchors_preset = -1
 offset_left = 157.0
 offset_right = 197.0
 offset_bottom = 32.0
