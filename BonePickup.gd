@@ -31,13 +31,12 @@ func ahoy():
 	enemies = get_tree().get_nodes_in_group("enemy")
 	var dis = 30000
 	var temp_dis
-	var closest_enemy
 	for n in enemies:
 		temp_dis = player.position.distance_squared_to(n.position)
 		if temp_dis < dis:
 			dis = temp_dis
 			closest_enemy = n
-	if closest_enemy.is_in_group("enemy"):
+	if is_instance_valid(closest_enemy):
 		var bone = bone_projectile_scene.instantiate()
 		get_parent().add_child(bone)
 		bone.position = $BoneSprite.global_position

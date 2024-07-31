@@ -108,7 +108,6 @@ func separate():
 
 	$Separate.play()
 	$Alchemy_timer.start()
-	#await $AlchemyArea/AlchemyHitbox/Separate/AnimationPlayer.animation_finished
 	$Reticle.self_modulate.a = 0
 	$Reticle/AnimationPlayer.play("idle")
 
@@ -118,16 +117,6 @@ func merge():
 	get_parent().add_child(merge_instance)
 	can_alchemy = 0
 	charge = 0
-	#$Reticle/AnimationPlayer.play("Merge2")
-	#var reagents = $AlchemyArea.get_overlapping_bodies()
-	#for reagent in reagents:
-		#if reagent.is_in_group("mergeable") and equips <= 3:
-			#reagent.equip()
-			#var loot = lootspawn.instantiate()
-			#get_parent().add_child(loot)
-			#loot.position = global_position + Vector2.RIGHT.rotated(randi_range(0,360))*3
-			#position
-			#equips += 1
 	$Merge.play()
 	$Alchemy_timer.start()
 	$Reticle.self_modulate.a = 0

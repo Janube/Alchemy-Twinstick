@@ -5,7 +5,6 @@ var escaped
 @onready var skelington_scene = preload("skelington.tscn")
 #@onready var skelfunc = get_node("/root/skelington")
 @onready var player = get_node("Player")
-#@onready var ENEMY2_scene = load("ENEMY2.tscn")
 @onready var spawntimer
 
 func _ready():
