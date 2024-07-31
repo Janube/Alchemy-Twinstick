@@ -19,3 +19,7 @@ frame = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_evq77")
+
+[node name="Reload" type="Timer" parent="."]
+
+[connection signal="timeout" from="Reload" to="." method="_on_reload_timeout"]

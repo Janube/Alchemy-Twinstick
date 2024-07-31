@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cimbo4ki0onkb"]
+
+[ext_resource type="Script" path="res://bone_projectile.gd" id="1_hvtfu"]
+[ext_resource type="Texture2D" uid="uid://rhcrc11qyrq0" path="res://Art/Skeleton/Items_Bone2.png" id="2_3dm0f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wecn7"]
+size = Vector2(5, 19)
+
+[node name="BoneProjectile" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_hvtfu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 0.785398
+scale = Vector2(1, 1)
+texture = ExtResource("2_3dm0f")
+hframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_wecn7")

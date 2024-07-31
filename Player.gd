@@ -1,4 +1,5 @@
 extends CharacterBody2D
+signal hit
 @export var move_speed : float = 100
 @export var starting_direction : Vector2 = Vector2(0, 1)
 @onready var animation_tree = $AnimationTree
@@ -140,6 +141,9 @@ func _on_alchemy_timer_timeout():
 func _on_alchemy_windup_timeout():
 	charge = 1
 
+func _on_hitbox_body_entered(body):
+	if body.is_in_group("enemy"):
+		hit.emit()
 
 	
 #Make alchemyarea tie to global mouse position only when var == 1 and have that var go to 0 during func casts

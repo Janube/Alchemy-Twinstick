@@ -50,3 +50,7 @@ func death():
 	await $Sprite2D/AnimationPlayer.animation_finished
 	root.on_target_death()
 	queue_free()
+
+func _on_hitbox_body_entered(body):
+	#if body.is_in_group("weapon"): - NEEDS FIXED - BODY IS DETECTED, BUT IT'S NOT REGISTERING AS WEAPON
+	death()
