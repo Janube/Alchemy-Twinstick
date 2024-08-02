@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://djtr5sslnml4"]
+[gd_scene load_steps=4 format=3 uid="uid://bcwfo030obojh"]
 
 [ext_resource type="Script" path="res://HUD.gd" id="1_gp18k"]
 [ext_resource type="Texture2D" uid="uid://b0erj2tc3ay4y" path="res://Art/HP UI.png" id="2_74yq7"]
@@ -8,7 +8,6 @@
 script = ExtResource("1_gp18k")
 
 [node name="Score" type="Label" parent="."]
-anchors_preset = -1
 offset_left = 157.0
 offset_right = 197.0
 offset_bottom = 32.0

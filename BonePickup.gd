@@ -1,8 +1,9 @@
 extends CharacterBody2D
 @onready var player = get_node("/root/Base/Player")
+@onready var buffnode = get_node("/root/Base/Player/BuffNode")
 @onready var bone_projectile_scene = preload("res://bone_projectile.tscn")
 @onready var buff = 0
-@onready var speed = 100
+@onready var speed = 500
 @onready var angle = 0
 @onready var enemies
 @onready var enemy
@@ -21,13 +22,15 @@ func _ready():
 	add_to_group("mergeable")
 
 func equip():
-	buff = 1
-	set_collision_mask_value(10,1)
-	remove_from_group("mergeable")
-	$Reload.start()
+	buffnode._on_bone_equip(1)
+	queue_free()
+	#buff = 1
+	#set_collision_mask_value(10,1)
+	#remove_from_group("mergeable")
+	#$Reload.start()
 	
 	
-func ahoy():
+func NULL():
 	enemies = get_tree().get_nodes_in_group("enemy")
 	var dis = 30000
 	var temp_dis
@@ -48,5 +51,5 @@ func ahoy():
 func despawn():
 	queue_free() 
 
-func _on_reload_timeout():
-	ahoy()
+#func _on_reload_timeout():
+	#ahoy()

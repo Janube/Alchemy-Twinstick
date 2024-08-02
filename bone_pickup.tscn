@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvrikfwi6wk0y"]
+[gd_scene load_steps=4 format=3 uid="uid://de4ludv66jfoq"]
 
 [ext_resource type="Script" path="res://BonePickup.gd" id="1_k1o7b"]
 [ext_resource type="Texture2D" uid="uid://cd4me5848t0s3" path="res://Art/Skeleton/Items_Bone.png" id="2_oobsk"]

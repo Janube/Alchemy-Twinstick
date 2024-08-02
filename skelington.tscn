@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://w4tnxkkf7bl0"]
+[gd_scene load_steps=10 format=3 uid="uid://dpvxb5ib6mkt5"]
 
 [ext_resource type="Script" path="res://Skelington.gd" id="1_t3oe5"]
 [ext_resource type="Texture2D" uid="uid://bldkrmldxcymu" path="res://Art/Skeleton/skeleton-walk.png" id="2_c4451"]
@@ -62,7 +62,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rusch"]
-size = Vector2(12, 26)
+size = Vector2(12, 25)
 
 [node name="Skelington" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 10
@@ -74,7 +74,7 @@ z_index = -1
 texture = ExtResource("2_c4451")
 hframes = 4
 vframes = 3
-frame = 4
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
 libraries = {
@@ -87,7 +87,7 @@ stream = ExtResource("3_snt4j")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 10)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_rusch")
 
 [node name="Impact" type="AudioStreamPlayer" parent="."]

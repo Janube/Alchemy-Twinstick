@@ -1,12 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://dfjqaakl3xngk"]
+[gd_scene load_steps=19 format=3 uid="uid://c50c02u5wnybo"]
 
-[ext_resource type="PackedScene" uid="uid://cuede48rui6j2" path="res://Player.tscn" id="1_lk5ld"]
+[ext_resource type="PackedScene" uid="uid://d8cx8wbn22yw" path="res://Player.tscn" id="1_lk5ld"]
 [ext_resource type="Script" path="res://base.gd" id="1_va5gk"]
 [ext_resource type="Texture2D" uid="uid://b5hhjdggoau1b" path="res://Art/Ground_rocks.png" id="2_omxnp"]
 [ext_resource type="Texture2D" uid="uid://decfrlmwb3suo" path="res://Art/Ring2.png" id="3_qajak"]
 [ext_resource type="AudioStream" uid="uid://dqh78j1vub3x5" path="res://Art/synth3.wav" id="4_xypln"]
 [ext_resource type="AudioStream" uid="uid://bhba8lsq84c5w" path="res://Art/synth4.wav" id="5_k3q55"]
-[ext_resource type="PackedScene" uid="uid://djtr5sslnml4" path="res://hud.tscn" id="6_uy1jr"]
+[ext_resource type="PackedScene" uid="uid://bcwfo030obojh" path="res://hud.tscn" id="6_uy1jr"]
+[ext_resource type="Script" path="res://BuffNode.gd" id="7_btp5n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wlobm"]
 texture = ExtResource("2_omxnp")
@@ -3297,6 +3298,9 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(4, 11, 526, 8, 525, 346, 5, 341)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqm0n"]
+size = Vector2(501, 307)
+
 [sub_resource type="Animation" id="Animation_pocsj"]
 resource_name = "Merge1"
 length = 1.15
@@ -3398,6 +3402,12 @@ layer_0/tile_data = PackedInt32Array(196614, 131072, 9, 196615, 131072, 9, 19661
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_qv3tf")
 
+[node name="NavRegionArea" type="Area2D" parent="NavigationRegion2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/NavRegionArea"]
+position = Vector2(264.5, 173.5)
+shape = SubResource("RectangleShape2D_sqm0n")
+
 [node name="Player" parent="." instance=ExtResource("1_lk5ld")]
 position = Vector2(278, 197)
 
@@ -3424,6 +3434,9 @@ frame = 14
 libraries = {
 "": SubResource("AnimationLibrary_a2tbn")
 }
+
+[node name="BuffNode" type="Node2D" parent="Player"]
+script = ExtResource("7_btp5n")
 
 [node name="Enemy_timer" type="Timer" parent="."]
 wait_time = 3.0

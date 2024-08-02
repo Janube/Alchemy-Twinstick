@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cuede48rui6j2"]
+[gd_scene load_steps=57 format=3 uid="uid://d8cx8wbn22yw"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_wndvb"]
 [ext_resource type="Texture2D" uid="uid://bss1wjvhfkg8t" path="res://Art/wizard.png" id="2_5qemn"]
@@ -38,8 +38,8 @@ tracks/0/keys = {
 "values": [1]
 }
 
-[sub_resource type="Animation" id="Animation_evjf5"]
-resource_name = "idle_left"
+[sub_resource type="Animation" id="Animation_acc1u"]
+resource_name = "idle_down_merge"
 length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
@@ -49,111 +49,10 @@ tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.3),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [4]
-}
-
-[sub_resource type="Animation" id="Animation_7njoe"]
-resource_name = "idle_right"
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [10]
-}
-
-[sub_resource type="Animation" id="Animation_6tjll"]
-resource_name = "idle_up"
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [7]
-}
-
-[sub_resource type="Animation" id="Animation_rpipj"]
-resource_name = "walk_down"
-length = 0.73
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 1]
-}
-
-[sub_resource type="Animation" id="Animation_74kym"]
-resource_name = "walk_left"
-length = 0.73
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [3, 4, 5, 4]
-}
-
-[sub_resource type="Animation" id="Animation_88srn"]
-resource_name = "walk_right"
-length = 0.73
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [9, 10, 11, 10]
-}
-
-[sub_resource type="Animation" id="Animation_j08ch"]
-resource_name = "walk_up"
-length = 0.73
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [6, 7, 8, 7]
+"values": [25]
 }
 
 [sub_resource type="Animation" id="Animation_gdoqq"]
@@ -173,25 +72,8 @@ tracks/0/keys = {
 "values": [13]
 }
 
-[sub_resource type="Animation" id="Animation_acc1u"]
-resource_name = "idle_down_merge"
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [25]
-}
-
-[sub_resource type="Animation" id="Animation_e4o0g"]
-resource_name = "idle_left_separate"
+[sub_resource type="Animation" id="Animation_evjf5"]
+resource_name = "idle_left"
 length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
@@ -204,7 +86,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [16]
+"values": [4]
 }
 
 [sub_resource type="Animation" id="Animation_8i0i1"]
@@ -224,8 +106,8 @@ tracks/0/keys = {
 "values": [28]
 }
 
-[sub_resource type="Animation" id="Animation_v32ns"]
-resource_name = "idle_right_separate"
+[sub_resource type="Animation" id="Animation_e4o0g"]
+resource_name = "idle_left_separate"
 length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
@@ -238,7 +120,24 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [22]
+"values": [16]
+}
+
+[sub_resource type="Animation" id="Animation_7njoe"]
+resource_name = "idle_right"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
 }
 
 [sub_resource type="Animation" id="Animation_cye0o"]
@@ -258,8 +157,8 @@ tracks/0/keys = {
 "values": [34]
 }
 
-[sub_resource type="Animation" id="Animation_wksi2"]
-resource_name = "idle_up_separate"
+[sub_resource type="Animation" id="Animation_v32ns"]
+resource_name = "idle_right_separate"
 length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
@@ -272,7 +171,24 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [19]
+"values": [22]
+}
+
+[sub_resource type="Animation" id="Animation_6tjll"]
+resource_name = "idle_up"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
 }
 
 [sub_resource type="Animation" id="Animation_3psik"]
@@ -292,8 +208,25 @@ tracks/0/keys = {
 "values": [31]
 }
 
-[sub_resource type="Animation" id="Animation_r1ctu"]
-resource_name = "walk_down_separate"
+[sub_resource type="Animation" id="Animation_wksi2"]
+resource_name = "idle_up_separate"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [19]
+}
+
+[sub_resource type="Animation" id="Animation_rpipj"]
+resource_name = "walk_down"
 length = 0.73
 loop_mode = 1
 tracks/0/type = "value"
@@ -306,7 +239,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [12, 13, 14, 13]
+"values": [0, 1, 2, 1]
 }
 
 [sub_resource type="Animation" id="Animation_rr0r4"]
@@ -326,8 +259,8 @@ tracks/0/keys = {
 "values": [24, 25, 26, 25]
 }
 
-[sub_resource type="Animation" id="Animation_foiws"]
-resource_name = "walk_left_separate"
+[sub_resource type="Animation" id="Animation_r1ctu"]
+resource_name = "walk_down_separate"
 length = 0.73
 loop_mode = 1
 tracks/0/type = "value"
@@ -340,7 +273,24 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [15, 16, 17, 16]
+"values": [12, 13, 14, 13]
+}
+
+[sub_resource type="Animation" id="Animation_74kym"]
+resource_name = "walk_left"
+length = 0.73
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 5, 4]
 }
 
 [sub_resource type="Animation" id="Animation_v6a6l"]
@@ -360,8 +310,8 @@ tracks/0/keys = {
 "values": [27, 28, 29, 28]
 }
 
-[sub_resource type="Animation" id="Animation_sxm6c"]
-resource_name = "walk_right_separate"
+[sub_resource type="Animation" id="Animation_foiws"]
+resource_name = "walk_left_separate"
 length = 0.73
 loop_mode = 1
 tracks/0/type = "value"
@@ -374,7 +324,24 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [21, 22, 23, 22]
+"values": [15, 16, 17, 16]
+}
+
+[sub_resource type="Animation" id="Animation_88srn"]
+resource_name = "walk_right"
+length = 0.73
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 10]
 }
 
 [sub_resource type="Animation" id="Animation_3cssb"]
@@ -394,8 +361,25 @@ tracks/0/keys = {
 "values": [33, 34, 35, 34]
 }
 
-[sub_resource type="Animation" id="Animation_c7alv"]
-resource_name = "walk_up_separate"
+[sub_resource type="Animation" id="Animation_sxm6c"]
+resource_name = "walk_right_separate"
+length = 0.73
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [21, 22, 23, 22]
+}
+
+[sub_resource type="Animation" id="Animation_j08ch"]
+resource_name = "walk_up"
 length = 0.73
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -407,7 +391,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [18, 19, 20, 19]
+"values": [6, 7, 8, 7]
 }
 
 [sub_resource type="Animation" id="Animation_md64b"]
@@ -424,6 +408,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [30, 31, 32, 31]
+}
+
+[sub_resource type="Animation" id="Animation_c7alv"]
+resource_name = "walk_up_separate"
+length = 0.73
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [18, 19, 20, 19]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0l3yg"]
