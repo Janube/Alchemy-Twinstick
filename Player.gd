@@ -9,8 +9,11 @@ var merge_scene = preload("res://merge.tscn")
 @onready var can_alchemy = 1
 @onready var charge = 0
 @onready var equips = 0
-@onready var magic_input
 @onready var mana = get_node("/root/Base/HUD/Mana")
+@onready var health = get_node("/root/Base/HUD/Health")
+@onready var max_hp = 3
+@onready var current_hp = max_hp
+
 #const separationscene = preload("res://separate.tscn")
 var sound_effect
 
@@ -18,7 +21,7 @@ var sound_effect
 func _ready():
 	animation_tree.set_active(true)
 	update_animation_parameters(starting_direction)
-	
+	current_hp = max_hp
 
 	
 func _physics_process(_delta):
@@ -54,14 +57,14 @@ func pick_new_state():
 		#state_machine.travel("walk_separate")
 	#elif (velocity != Vector2.ZERO) and magic_input == -1:
 		#state_machine.travel("walk_merge")
-	if (velocity != Vector2.ZERO) and magic_input == 0:
-		state_machine.travel("walk")
+	#if (velocity != Vector2.ZERO) and magic_input == 0:
+		#state_machine.travel("walk")
 	#elif (velocity == Vector2.ZERO) and magic_input == 1:
 		#state_machine.travel("idle_separate")
 	#elif (velocity == Vector2.ZERO) and magic_input == -1:
 		#state_machine.travel("idle_merge")
-	elif (velocity == Vector2.ZERO) and magic_input == 0:
-		state_machine.travel("idle")
+	#elif (velocity == Vector2.ZERO) and magic_input == 0:
+		#state_machine.travel("idle")
 
 
 
@@ -140,6 +143,20 @@ func _on_alchemy_timer_timeout():
 func _on_alchemy_windup_timeout():
 	charge = 1
 
+<<<<<<< Updated upstream
+=======
+		
+func OnHit(damage):
+	$Ow.pitch_scale = randf_range(.95,1.05)
+	$Ow.play()
+	current_hp -= damage
+	health.frame += 1
+	if current_hp <= 0:
+		death()
+	
+func death():
+	print("Game Over")
+>>>>>>> Stashed changes
 
 	
 #Make alchemyarea tie to global mouse position only when var == 1 and have that var go to 0 during func casts

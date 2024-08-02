@@ -3,7 +3,10 @@ extends Node2D
 @onready var score = 0
 var escaped
 @onready var skelington_scene = preload("skelington.tscn")
+<<<<<<< Updated upstream
 @onready var skelfunc = get_node("/root/skelington")
+=======
+>>>>>>> Stashed changes
 @onready var player = get_node("Player")
 #@onready var ENEMY2_scene = load("ENEMY2.tscn")
 @onready var spawntimer

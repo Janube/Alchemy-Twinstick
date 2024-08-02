@@ -6,6 +6,12 @@ extends CharacterBody2D
 @onready var loot = preload("bone_pickup.tscn")
 @onready var move = 0
 @onready var scalesize
+<<<<<<< Updated upstream
+=======
+@onready var damage = 1
+var max_hp = 400
+var current_hp
+>>>>>>> Stashed changes
 
 func _ready():
 	scalesize = randf_range(0.9,1.1)
@@ -25,7 +31,17 @@ func _physics_process(delta):
 
 		else:
 			$Sprite2D.scale.x = 1 * scalesize
+	if position.distance_squared_to(navigation_agent.target_position) <= 550:
+		attack()
 	move_and_slide()
+	
+func attack():
+	move = 0
+	velocity = Vector2.ZERO
+	$Sprite2D/AnimationPlayer.play("Attack")
+	await $Sprite2D/AnimationPlayer.animation_finished
+	movement()
+	
 	
 func movement():
 	$Sprite2D/AnimationPlayer.play("Walk")
@@ -50,3 +66,20 @@ func death():
 	await $Sprite2D/AnimationPlayer.animation_finished
 	root.on_target_death()
 	queue_free()
+<<<<<<< Updated upstream
+=======
+
+func OnHit(damage):
+	$Impact.pitch_scale = randf_range(.95,1.05)
+	$Impact.play()
+	current_hp -= damage
+	if current_hp <= 0:
+		death()
+
+
+
+
+func _on_hitbox_body_entered(body):
+	if body.is_in_group("player"):
+		body.OnHit(damage)
+>>>>>>> Stashed changes
