@@ -1,4 +1,5 @@
 extends CharacterBody2D
+signal hit
 @export var move_speed : float = 100
 @export var starting_direction : Vector2 = Vector2(0, 1)
 @onready var animation_tree = $AnimationTree
@@ -14,6 +15,7 @@ var merge_scene = preload("res://merge.tscn")
 @onready var max_hp = 3
 @onready var current_hp = max_hp
 
+var dead_zone = 0.2  #Dead zone adjustment so the player doesn't automatically move if center isn't exactly 0,0
 #const separationscene = preload("res://separate.tscn")
 var sound_effect
 
@@ -22,6 +24,7 @@ func _ready():
 	animation_tree.set_active(true)
 	update_animation_parameters(starting_direction)
 	current_hp = max_hp
+	
 
 	
 func _physics_process(_delta):
@@ -35,6 +38,20 @@ func _physics_process(_delta):
 	#update_animation_parameters(magic_input)
 	velocity = input_direction * move_speed
 	move_and_slide()
+
+	# Handle controller input
+	var joystick_input = Vector2(
+		Input.get_joy_axis(0, JOY_AXIS_LEFT_X),
+		Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)
+	)
+
+	# Apply dead zone
+	if abs(joystick_input.x) < dead_zone:
+		joystick_input.x = 0
+	if abs(joystick_input.y) < dead_zone:
+		joystick_input.y = 0
+
+	input_direction += joystick_input
 
 func update_animation_parameters(move_input : Vector2):
 	if(move_input != Vector2.ZERO):
@@ -66,11 +83,24 @@ func pick_new_state():
 	#elif (velocity == Vector2.ZERO) and magic_input == 0:
 		#state_machine.travel("idle")
 
-
+func update_reticle_position():
+	var right_stick_input = Vector2(
+		Input.get_joy_axis(0, JOY_AXIS_RIGHT_X),
+		Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
+	)
+	#Apply dead zone
+	if abs(right_stick_input.x) < dead_zone:
+		right_stick_input.x = 0
+	if abs(right_stick_input.y) < dead_zone:
+		right_stick_input.y = 0
+	#Update reticle position based on right stick input
+	if right_stick_input != Vector2.ZERO:
+		$Reticle.position += right_stick_input * move_speed * get_process_delta_time()
 
 func _process(_delta):
+	update_reticle_position()
 	if can_alchemy == 1:
-		$Reticle.position = get_local_mouse_position()
+		#$Reticle.position = get_local_mouse_position()
 		mana.frame = 0
 	if can_alchemy == 0:
 		mana.frame = 1
@@ -110,7 +140,6 @@ func separate():
 
 	$Separate.play()
 	$Alchemy_timer.start()
-	#await $AlchemyArea/AlchemyHitbox/Separate/AnimationPlayer.animation_finished
 	$Reticle.self_modulate.a = 0
 	$Reticle/AnimationPlayer.play("idle")
 
@@ -120,16 +149,6 @@ func merge():
 	get_parent().add_child(merge_instance)
 	can_alchemy = 0
 	charge = 0
-	#$Reticle/AnimationPlayer.play("Merge2")
-	#var reagents = $AlchemyArea.get_overlapping_bodies()
-	#for reagent in reagents:
-		#if reagent.is_in_group("mergeable") and equips <= 3:
-			#reagent.equip()
-			#var loot = lootspawn.instantiate()
-			#get_parent().add_child(loot)
-			#loot.position = global_position + Vector2.RIGHT.rotated(randi_range(0,360))*3
-			#position
-			#equips += 1
 	$Merge.play()
 	$Alchemy_timer.start()
 	$Reticle.self_modulate.a = 0
@@ -143,8 +162,6 @@ func _on_alchemy_timer_timeout():
 func _on_alchemy_windup_timeout():
 	charge = 1
 
-<<<<<<< Updated upstream
-=======
 		
 func OnHit(damage):
 	$Ow.pitch_scale = randf_range(.95,1.05)
@@ -156,7 +173,6 @@ func OnHit(damage):
 	
 func death():
 	print("Game Over")
->>>>>>> Stashed changes
 
 	
 #Make alchemyarea tie to global mouse position only when var == 1 and have that var go to 0 during func casts

@@ -6,14 +6,12 @@ extends CharacterBody2D
 @onready var loot = preload("bone_pickup.tscn")
 @onready var move = 0
 @onready var scalesize
-<<<<<<< Updated upstream
-=======
 @onready var damage = 1
 var max_hp = 400
 var current_hp
->>>>>>> Stashed changes
 
 func _ready():
+	current_hp = max_hp
 	scalesize = randf_range(0.9,1.1)
 	self.scale.x = scalesize
 	self.scale.y = scalesize
@@ -22,7 +20,7 @@ func _ready():
 	movement()
 	add_to_group("enemy")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if move == 1:
 		navigation_agent.target_position = playerlocation.global_position
 		velocity = global_position.direction_to(navigation_agent.get_next_path_position()) * enemyspeed
@@ -50,6 +48,7 @@ func movement():
 
 func alchemydeath():
 	enemyspeed = 0
+	$CollisionShape2D.set_deferred("disabled", true)
 	$Sprite2D/AnimationPlayer.play("Break")
 	var lootdrop = loot.instantiate()
 	get_parent().add_child(lootdrop)
@@ -61,13 +60,12 @@ func alchemydeath():
 
 func death():
 	enemyspeed = 0
+	$CollisionShape2D.set_deferred("disabled", true)
 	$Sprite2D/AnimationPlayer.play("Break")
 	$Explode.play()
 	await $Sprite2D/AnimationPlayer.animation_finished
 	root.on_target_death()
 	queue_free()
-<<<<<<< Updated upstream
-=======
 
 func OnHit(damage):
 	$Impact.pitch_scale = randf_range(.95,1.05)
@@ -82,4 +80,3 @@ func OnHit(damage):
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("player"):
 		body.OnHit(damage)
->>>>>>> Stashed changes

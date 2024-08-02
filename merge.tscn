@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dja7oxq88mccl"]
+[gd_scene load_steps=10 format=3 uid="uid://oa1j84xhddm0"]
 
 [ext_resource type="Script" path="res://merge.gd" id="1_46fkk"]
 [ext_resource type="Texture2D" uid="uid://decfrlmwb3suo" path="res://Art/Ring2.png" id="2_odx82"]
@@ -109,7 +109,7 @@ z_index = 1
 texture = ExtResource("2_odx82")
 hframes = 12
 vframes = 2
-frame = 20
+frame = 23
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AlchemyHitbox/Merge"]
 libraries = {

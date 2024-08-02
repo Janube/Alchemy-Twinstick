@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://defjuy807453y"]
+
+[ext_resource type="Script" path="res://bone_equip.gd" id="1_8i1uu"]
+[ext_resource type="Texture2D" uid="uid://rhcrc11qyrq0" path="res://Art/Skeleton/Items_Bone2.png" id="2_gsvml"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prrdb"]
+size = Vector2(5, 17)
+
+[node name="BoneEquip" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 512
+safe_margin = 0.04
+script = ExtResource("1_8i1uu")
+
+[node name="BoneSprite" type="Sprite2D" parent="."]
+scale = Vector2(1, 1)
+texture = ExtResource("2_gsvml")
+offset = Vector2(20, 0)
+hframes = 8
+frame = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(20, 0.5)
+shape = SubResource("RectangleShape2D_prrdb")
+
+[node name="Bone_Reload" type="Timer" parent="."]
+
+[connection signal="timeout" from="Bone_Reload" to="." method="_on_bone_reload_timeout"]

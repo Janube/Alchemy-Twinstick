@@ -9,9 +9,9 @@ func _ready():
 	merge()
 	cheat = true
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	if cheat == true:
-		var reagents = get_overlapping_bodies()
+		reagents = get_overlapping_bodies()
 		for reagent in reagents:
 			if reagent.is_in_group("mergeable") and equip_check.equips <= 3:
 				reagent.equip()
@@ -24,7 +24,7 @@ func _physics_process(delta):
 	
 func merge():
 	$AlchemyHitbox/Merge/AnimationPlayer.play("Merge2")
-	var reagents = get_overlapping_bodies()
+	reagents = get_overlapping_bodies()
 	for reagent in reagents:
 		if reagent.is_in_group("mergeable") and equips <= 3:
 			reagent.equip()

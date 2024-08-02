@@ -1,22 +1,22 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=17 format=3 uid="uid://dfjqaakl3xngk"]
-=======
 [gd_scene load_steps=17 format=3 uid="uid://c50c02u5wnybo"]
->>>>>>> Stashed changes
 
-[ext_resource type="PackedScene" uid="uid://cuede48rui6j2" path="res://Player.tscn" id="1_lk5ld"]
+[ext_resource type="PackedScene" uid="uid://d8cx8wbn22yw" path="res://Player.tscn" id="1_lk5ld"]
 [ext_resource type="Script" path="res://base.gd" id="1_va5gk"]
 [ext_resource type="TileSet" uid="uid://bpakx3jebth74" path="res://Basic Tileset.tres" id="2_f6k27"]
 [ext_resource type="Texture2D" uid="uid://decfrlmwb3suo" path="res://Art/Ring2.png" id="3_qajak"]
 [ext_resource type="AudioStream" uid="uid://dqh78j1vub3x5" path="res://Art/synth3.wav" id="4_xypln"]
 [ext_resource type="AudioStream" uid="uid://bhba8lsq84c5w" path="res://Art/synth4.wav" id="5_k3q55"]
-[ext_resource type="PackedScene" uid="uid://djtr5sslnml4" path="res://hud.tscn" id="6_uy1jr"]
+[ext_resource type="PackedScene" uid="uid://bcwfo030obojh" path="res://hud.tscn" id="6_uy1jr"]
+[ext_resource type="Script" path="res://BuffNode.gd" id="7_btp5n"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qv3tf"]
 vertices = PackedVector2Array(515, 335, 14, 331, 14, 20, 515, 18)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(4, 11, 526, 8, 525, 346, 5, 341)])
 source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqm0n"]
+size = Vector2(501, 307)
 
 [sub_resource type="Animation" id="Animation_pocsj"]
 resource_name = "Merge1"
@@ -110,7 +110,7 @@ _data = {
 [node name="Base" type="Node2D"]
 script = ExtResource("1_va5gk")
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="." groups=["wall"]]
 z_index = -1
 tile_set = ExtResource("2_f6k27")
 format = 2
@@ -122,6 +122,12 @@ layer_1/tile_data = PackedInt32Array(983047, 1769472, 11, 1048583, 1769472, 12, 
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_qv3tf")
+
+[node name="NavRegionArea" type="Area2D" parent="NavigationRegion2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/NavRegionArea"]
+position = Vector2(264.5, 173.5)
+shape = SubResource("RectangleShape2D_sqm0n")
 
 [node name="Player" parent="." instance=ExtResource("1_lk5ld")]
 position = Vector2(278, 197)
@@ -149,6 +155,9 @@ frame = 14
 libraries = {
 "": SubResource("AnimationLibrary_a2tbn")
 }
+
+[node name="BuffNode" type="Node2D" parent="Player"]
+script = ExtResource("7_btp5n")
 
 [node name="Enemy_timer" type="Timer" parent="."]
 wait_time = 3.0
