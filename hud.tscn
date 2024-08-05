@@ -8,10 +8,12 @@
 script = ExtResource("1_gp18k")
 
 [node name="Score" type="Label" parent="."]
-offset_left = 157.0
-offset_right = 197.0
-offset_bottom = 32.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
 text = "0"
+horizontal_alignment = 1
 
 [node name="Health" type="Sprite2D" parent="."]
 position = Vector2(24, 9)

@@ -1,0 +1,174 @@
+[gd_scene load_steps=16 format=3 uid="uid://3l55u0ws7gxm"]
+
+[ext_resource type="Script" path="res://Reaper.gd" id="1_vqqf1"]
+[ext_resource type="Texture2D" uid="uid://csbxpvaagguy1" path="res://Art/Reaper Boss/Reaper Sheet.png" id="2_bcbuo"]
+[ext_resource type="Texture2D" uid="uid://cssb5oo4e22iw" path="res://Art/Reaper Boss/HUD_Boss.png" id="3_xmxrc"]
+[ext_resource type="Texture2D" uid="uid://cs5u0yqg06oql" path="res://Art/Reaper Boss/Healthbar.png" id="4_lkhkm"]
+[ext_resource type="AudioStream" uid="uid://bsrdg40rtr1ur" path="res://Art/scary-laugh-made-with-Voicemod Short.wav" id="4_qbakq"]
+[ext_resource type="AudioStream" uid="uid://b77slchf8sqrg" path="res://Art/EFBossAppearingEscaping.wav" id="5_o01lx"]
+[ext_resource type="AudioStream" uid="uid://bqwke60gjhn2n" path="res://Art/Bluezone_BC0297_stone_impact_steel_bar_01_010.wav" id="6_22f3g"]
+[ext_resource type="AudioStream" uid="uid://bvaaqljbix5xm" path="res://Art/47Ting.wav" id="7_d2hn1"]
+
+[sub_resource type="Animation" id="Animation_rx64g"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_ug2iq"]
+resource_name = "attack"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15, 16, 17, 18, 19]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_35tcv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_jp5ep"]
+resource_name = "fakedeath"
+length = 4.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [37, 38, 39, 40, 39, 38, 39, 38, 37, 38, 39, 40, 39, 38, 39, 38, 39, 40, 39, 38, 37, 37, 38, 39, 40, 39, 38, 39, 38, 37, 38, 39, 40, 39, 38, 39, 38, 39, 40, 39, 38, 37]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fkc0e"]
+_data = {
+"RESET": SubResource("Animation_35tcv"),
+"attack": SubResource("Animation_ug2iq"),
+"fakedeath": SubResource("Animation_jp5ep"),
+"walk": SubResource("Animation_rx64g")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ioov"]
+size = Vector2(60, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_460aw"]
+size = Vector2(24, 29)
+
+[node name="Reaper" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 8
+collision_mask = 9
+platform_floor_layers = 4294967292
+script = ExtResource("1_vqqf1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_bcbuo")
+hframes = 12
+vframes = 4
+frame = 38
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_fkc0e")
+}
+
+[node name="Hitbox" type="Area2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Hitbox"]
+position = Vector2(13, 0)
+shape = SubResource("RectangleShape2D_7ioov")
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_460aw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Healthbar" type="TextureProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -55.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(2, 2)
+max_value = 2000.0
+texture_over = ExtResource("3_xmxrc")
+texture_progress = ExtResource("4_lkhkm")
+texture_progress_offset = Vector2(0, 4)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Laugh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qbakq")
+
+[node name="FakeDeath" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_o01lx")
+
+[node name="Impact" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_22f3g")
+volume_db = -4.952
+
+[node name="Immune" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_d2hn1")
+
+[connection signal="body_entered" from="Sprite2D/Hitbox" to="." method="_on_hitbox_body_entered"]

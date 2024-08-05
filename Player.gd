@@ -2,6 +2,7 @@ extends CharacterBody2D
 signal hit
 @export var move_speed : float = 100
 @export var starting_direction : Vector2 = Vector2(0, 1)
+@onready var HUD_scene = get_node("/root/Base/HUD")
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
 @onready var lootspawn = preload("res://bone_pickup.tscn")
@@ -14,6 +15,7 @@ var merge_scene = preload("res://merge.tscn")
 @onready var health = get_node("/root/Base/HUD/Health")
 @onready var max_hp = 3
 @onready var current_hp = max_hp
+var mouse_active
 
 var dead_zone = 0.2  #Dead zone adjustment so the player doesn't automatically move if center isn't exactly 0,0
 #const separationscene = preload("res://separate.tscn")
@@ -95,12 +97,19 @@ func update_reticle_position():
 		right_stick_input.y = 0
 	#Update reticle position based on right stick input
 	if right_stick_input != Vector2.ZERO:
+		mouse_active = false
 		$Reticle.position += right_stick_input * move_speed * get_process_delta_time()
+	if mouse_active == true:
+		$Reticle.position = get_local_mouse_position()
+		
+func _input(event):
+	if event is InputEventMouseMotion:
+		mouse_active = true
 
 func _process(_delta):
-	update_reticle_position()
+	
 	if can_alchemy == 1:
-		#$Reticle.position = get_local_mouse_position()
+		update_reticle_position()
 		mana.frame = 0
 	if can_alchemy == 0:
 		mana.frame = 1
@@ -167,12 +176,13 @@ func OnHit(damage):
 	$Ow.pitch_scale = randf_range(.95,1.05)
 	$Ow.play()
 	current_hp -= damage
-	health.frame += 1
+	if health.frame < 3:
+		health.frame += 1
 	if current_hp <= 0:
 		death()
 	
 func death():
-	print("Game Over")
+	HUD_scene.show_message("Game Over")
 
 	
 #Make alchemyarea tie to global mouse position only when var == 1 and have that var go to 0 during func casts

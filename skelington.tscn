@@ -113,8 +113,9 @@ size = Vector2(28, 43)
 size = Vector2(12, 25)
 
 [node name="Skelington" type="CharacterBody2D" groups=["enemy"]]
-collision_layer = 10
-collision_mask = 10
+z_index = 1
+collision_layer = 11
+collision_mask = 11
 platform_floor_layers = 4294967292
 script = ExtResource("1_t3oe5")
 

@@ -6,9 +6,10 @@ extends CharacterBody2D
 @onready var loot = preload("bone_pickup.tscn")
 @onready var move = 0
 @onready var scalesize
-@onready var damage = 1
-var max_hp = 400
+@onready var attack_damage = 1
+var max_hp = 150
 var current_hp
+@onready var can_attack = 1
 
 func _ready():
 	current_hp = max_hp
@@ -18,6 +19,7 @@ func _ready():
 	$Sprite2D/AnimationPlayer.play("Spawn")
 	await $Sprite2D/AnimationPlayer.animation_finished
 	movement()
+	var can_attack = 1
 	add_to_group("enemy")
 
 func _physics_process(_delta):
@@ -34,11 +36,12 @@ func _physics_process(_delta):
 	move_and_slide()
 	
 func attack():
-	move = 0
-	velocity = Vector2.ZERO
-	$Sprite2D/AnimationPlayer.play("Attack")
-	await $Sprite2D/AnimationPlayer.animation_finished
-	movement()
+	if can_attack == 1:	
+		move = 0
+		velocity = Vector2.ZERO
+		$Sprite2D/AnimationPlayer.play("Attack")
+		await $Sprite2D/AnimationPlayer.animation_finished
+		movement()
 	
 	
 func movement():
@@ -47,6 +50,7 @@ func movement():
 	
 
 func alchemydeath():
+	can_attack = 0
 	enemyspeed = 0
 	$CollisionShape2D.set_deferred("disabled", true)
 	$Sprite2D/AnimationPlayer.play("Break")
@@ -59,6 +63,7 @@ func alchemydeath():
 	queue_free()
 
 func death():
+	can_attack = 0
 	enemyspeed = 0
 	$CollisionShape2D.set_deferred("disabled", true)
 	$Sprite2D/AnimationPlayer.play("Break")
@@ -79,4 +84,4 @@ func OnHit(damage):
 
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("player"):
-		body.OnHit(damage)
+		body.OnHit(attack_damage)
