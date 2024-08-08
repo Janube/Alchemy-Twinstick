@@ -1,35 +1,10 @@
+V 0.1 of this shitty game jam is finally in!
 
-<div align="center">
-   <img width="64" height="64" src="CREDITS/logo64.png" alt="Logo">
-   <h1>AG-Credits</h1>
-   A credits scene for Godot Engine.
-</div>
+The base of the game idea is here: A twinstick where you separate enemies and objects with one hand and merge them together with the other.
 
-### How To Use:
-* Download & Enable Addon OR
-* Clone the repo, Copy "CREDITS" folder to your project folder
+Right now, you can only separate skeletons and you can only merge their one piece of loot with yourself.
 
-* Run get_tree().change_scene(filePath to GodotCredits.tscn)
+You can "carry" up to 4 bones right now. In the future, there'll be benefits and drawbacks to items as well as combos between items.
+Conceptually.
 
-You should have this structure:
-```
-res://
-|->CREDITS
-   |->GodotCredits.gd
-   |->GodotCredits.tscn
-```
-### Options:
-- BG Color
-- Transition to Scene when credits end
-- Title Color
-- Text Color
-- Title Font
-- Text Font
-- Music
-- Video
-- Using video audio
-
-### Ported to Godot 4 from:
-https://github.com/Draconis-25/AG-Credits
-
-###### MIT LISENCE
+Or I'll never touch it again. 6 of one, half dozen of the other.
