@@ -1,0 +1,12 @@
+[background arg="res://Art/Game Over.jpg" fade="2.0"]
+[wait time="2.0"]
+[style name="Style2"]
+join Player leftmost [animation="Fade In" length="1.0"]
+if {not_coward} == 1:
+	I guess... tutorials aren't... for cowards...\
+*grk*
+else:
+	I studied so much that... *hack*\
+I forgot... to... get good...
+[signal arg="death"]
+[end_timeline]

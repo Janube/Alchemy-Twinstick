@@ -1,5 +1,5 @@
 extends CharacterBody2D
-@onready var root = get_tree().get_current_scene()
+@onready var root = get_node("/root/Base")
 @onready var enemyspeed = randf_range(60,100)
 @onready var navigation_agent = $NavigationAgent2D
 @onready var playerlocation = get_node("/root/Base/Player")
@@ -20,6 +20,10 @@ func _ready():
 	$Sprite2D/AnimationPlayer.play("Spawn")
 	await $Sprite2D/AnimationPlayer.animation_finished
 	movement()
+<<<<<<< Updated upstream
+=======
+	can_attack = 1
+>>>>>>> Stashed changes
 	add_to_group("enemy")
 
 func _physics_process(delta):

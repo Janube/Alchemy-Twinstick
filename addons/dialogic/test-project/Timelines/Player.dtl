@@ -1,0 +1,27 @@
+[style name="Style2"]
+join Player leftmost [animation="Fade In Up" length="0.7" z_index="3"]
+Player: Just as desolate as I remember...
+leave Player [animation="Instant Out" length="0.0"]
+[wait time="2.0"]
+join Player leftmost [animation="Fade In Up" length="0.7" z_index="3"]
+Player: It's a simple test, but maybe I should look over my notes one last time?
+leave Player [animation="Instant Out" length="0.0"]
+[wait time="0.1"]
+- A tutorial? Yes, please
+	Left hand = separate objects\
+Right hand = merge objects to you
+	[wait time="1.0"]
+	join Player leftmost [animation="Fade In Up" length="0.7" z_index="3"]
+	Player: Okay, maybe I didn't need to look over my notes again.
+	set {coward} = 1
+- Measuring twice is for cowards
+	join Player leftmost [animation="Fade In Up" length="0.7" z_index="3"]
+	Player: And no one likes a coward.
+	set {not_coward} = 1
+leave Player [animation="Fade Out Down" length="0.7"]
+[wait time="1.0"]
+join Player leftmost [animation="Fade In Up" length="0.7"]
+Player: I just need a couple dozen piles of bones. No problem.
+Player: Time to get to work.
+[signal arg="begin"]
+[end_timeline]

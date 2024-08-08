@@ -11,13 +11,24 @@ func _position_children():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+<<<<<<< Updated upstream
 	#var bone = bone_equip.instantiate()
 	#add_child(bone)
+=======
+	#_on_bone_equip(1)#For testing
+	#await get_tree().create_timer(1.0).timeout
+	#_on_bone_equip(1)#For testing
+	#await get_tree().create_timer(1.0).timeout
+	#_on_bone_equip(1)#For testing
+	#await get_tree().create_timer(1.0).timeout
+	#_on_bone_equip(1)#For testing
+	#await get_tree().create_timer(1.0).timeout
+>>>>>>> Stashed changes
 	_position_children()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	rotation += 1.5*delta
+	rotation += 1.8*delta
 
 
 func _on_bone_equip(count:int):

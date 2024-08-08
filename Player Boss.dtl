@@ -1,0 +1,7 @@
+[signal arg="boss off"]
+[style name="Style2"]
+join Player leftmost [animation="Fade In Up" length="0.7"]
+Player: The gravekeeper.
+Player: My magic s
+[signal arg="boss"]
+[end_timeline]

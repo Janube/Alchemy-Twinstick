@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://rdvabhi6r2bk"]
+
+[ext_resource type="PackedScene" path="res://addons/Credits Addon/scenes/Menus/OptionsMenu/MasterOptionsMenu.tscn" id="1_2l4wd"]
+[ext_resource type="PackedScene" path="res://addons/Credits Addon/scenes/Menus/OptionsMenu/Input/InputOptionsMenuWithMouseSensitivity.tscn" id="2_jw8wt"]
+[ext_resource type="PackedScene" path="res://addons/Credits Addon/scenes/Menus/OptionsMenu/Audio/AudioOptionsMenu.tscn" id="3_8683d"]
+[ext_resource type="PackedScene" path="res://addons/Credits Addon/scenes/Menus/OptionsMenu/Video/VideoOptionsMenuWithExtras.tscn" id="4_ximvc"]
+[ext_resource type="PackedScene" path="res://addons/Credits Addon/scenes/Menus/OptionsMenu/Game/GameOptionsMenu.tscn" id="5_8auv8"]
+
+[node name="MasterOptionsMenu" instance=ExtResource("1_2l4wd")]
+
+[node name="Controls" parent="TabContainer" index="1" instance=ExtResource("2_jw8wt")]
+layout_mode = 2
+show_all_actions = true
+
+[node name="Audio" parent="TabContainer" index="2" instance=ExtResource("3_8683d")]
+visible = false
+layout_mode = 2
+
+[node name="Video" parent="TabContainer" index="3" instance=ExtResource("4_ximvc")]
+visible = false
+layout_mode = 2
+
+[node name="Game" parent="TabContainer" index="4" instance=ExtResource("5_8auv8")]
+visible = false
+layout_mode = 2

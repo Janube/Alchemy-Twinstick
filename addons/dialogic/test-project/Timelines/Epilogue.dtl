@@ -1,0 +1,6 @@
+[wait time="2.0"]
+[style name="Style2"]
+join Player leftmost [animation="Fade In Up" length="0.7"]
+Player: #FirstTry
+Player: Now to sell these bones to limbless orphans!
+[signal arg="credits"]
