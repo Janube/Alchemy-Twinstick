@@ -1,6 +1,5 @@
-[style name="Style2"]
 join Player leftmost [animation="Fade In Up" length="0.7" z_index="3"]
-Player: Just as desolate as I remember...
+Player: Ah, the graveyard. My home away from home.
 leave Player [animation="Instant Out" length="0.0"]
 [wait time="2.0"]
 join Player leftmost [animation="Fade In Up" length="0.7" z_index="3"]
@@ -8,11 +7,17 @@ Player: It's a simple test, but maybe I should look over my notes one last time?
 leave Player [animation="Instant Out" length="0.0"]
 [wait time="0.1"]
 - A tutorial? Yes, please
-	Left hand = separate objects\
-Right hand = merge objects to you
+	[style name="Style 2 BUT BIG"]
+	Left hand (LMB/Trigger) = separate objects\
+Right hand (RMB/Trigger) = merge objects to you\
+Z/△ = toggle autofire\
+\
+(Separate enemies and then snag their powers!)
 	[wait time="1.0"]
+	[style]
 	join Player leftmost [animation="Fade In Up" length="0.7" z_index="3"]
-	Player: Okay, maybe I didn't need to look over my notes again.
+	Player: Wow, these notes suck.
+	Player: What the hell is a 'Z'?
 	set {coward} = 1
 - Measuring twice is for cowards
 	join Player leftmost [animation="Fade In Up" length="0.7" z_index="3"]
@@ -21,7 +26,7 @@ Right hand = merge objects to you
 leave Player [animation="Fade Out Down" length="0.7"]
 [wait time="1.0"]
 join Player leftmost [animation="Fade In Up" length="0.7"]
-Player: I just need a couple dozen piles of bones. No problem.
+Player: Breaking a couple dozen skeletons should be enough.
 Player: Time to get to work.
 [signal arg="begin"]
 [end_timeline]

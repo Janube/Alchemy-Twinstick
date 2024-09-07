@@ -1,0 +1,3 @@
+join Player leftmost [animation="Instant In" length="0.0" z_index="-2"]
+Player: <Empty Text Event>
+[end_timeline]

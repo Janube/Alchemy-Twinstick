@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmmk31d282i46"]
 
-[ext_resource type="Script" path="res://CREDITS/GodotCredits.gd" id="1"]
+[ext_resource type="Script" path="res://Credits/GodotCredits.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://c50c02u5wnybo" path="res://game_level.tscn" id="2_wydkk"]
 [ext_resource type="AudioStream" uid="uid://brah2s6e43vwe" path="res://Art/Opening.wav" id="3_83wyg"]
 

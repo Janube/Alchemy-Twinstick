@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://qx4ctr478hgp"]
+
+[ext_resource type="Script" path="res://BuffNode.gd" id="1_qh5xr"]
+
+[node name="BuffNode" type="Node2D"]
+script = ExtResource("1_qh5xr")

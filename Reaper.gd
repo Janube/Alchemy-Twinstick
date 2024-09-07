@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var navigation_agent = $NavigationAgent2D
 @onready var Healthbar = $CanvasLayer/Control/Healthbar
 @onready var scalesize = 0.01
+@onready var dmgno = preload("res://damage_container.tscn")
 @onready var playerlocation = get_node("/root/Base/Player")
 @onready var fight_is_on = 1
 @onready var move = 0
@@ -100,11 +101,23 @@ func OnHit(damage):
 	if fight_is_on == 3:
 		$Impact.pitch_scale = randf_range(.95,1.05)
 		$Impact.play()
+		var dmg = dmgno.instantiate()
+		get_parent().add_child(dmg)
+		dmg.position = global_position
+		dmg.pop(damage)
+		var vec = randi_range(-75,75)
+		dmg.apply_impulse(Vector2(vec,-150))
 		current_hp -= damage
 		Healthbar.value = current_hp
 	elif fight_is_on != 3:
 		$Immune.pitch_scale = randf_range(.95,1.05)
 		$Immune.play()
+		var dmg = dmgno.instantiate()
+		get_parent().add_child(dmg)
+		dmg.position = global_position
+		dmg.pop("0")
+		var vec = randi_range(-75,75)
+		dmg.apply_impulse(Vector2(vec,-150))
 	if current_hp <= 0:
 		death()
 

@@ -7,9 +7,9 @@ func _ready():
 	separation()
 	cheat = true
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	if cheat == true:
-		var victims = get_overlapping_bodies()
+		victims = get_overlapping_bodies()
 		for victim in victims:
 			if victim.is_in_group("enemy"):
 				victim.alchemydeath()
